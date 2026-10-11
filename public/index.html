@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LuxeStay | Hotel Booking</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="navbar">
+  <a class="logo" href="#"><span>✦</span> LuxeStay</a>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#rooms">Our Rooms</a>
+    <a href="#services">Amenities</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="nav-actions">
+    <button class="btn btn-outline" id="loginBtn">Login</button>
+    <button class="btn btn-dark" id="registerBtn">Sign Up</button>
+    <button class="btn btn-outline hidden" id="dashboardBtn">My Account</button>
+    <button class="btn btn-gold hidden" id="historyBtn">Booking History</button>
+    <button class="btn btn-outline hidden" id="logoutBtn">Logout</button>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="eyebrow">YOUR NEXT GETAWAY STARTS HERE</span>
+      <h1>Find your perfect<br><em>place to stay.</em></h1>
+      <p>Thoughtfully chosen rooms, warm hospitality and memorable experiences.</p>
+      <a href="#rooms" class="btn btn-gold">Explore Our Rooms ↗</a>
+    </div>
+    <div class="hero-note">COMFORT · LUXURY · HOSPITALITY</div>
+  </section>
+
+  <section class="booking-search">
+    <div class="search-field">
+      <label for="searchCheckin">CHECK IN</label>
+      <input type="date" id="searchCheckin">
+    </div>
+
+    <div class="search-field">
+      <label for="searchCheckout">CHECK OUT</label>
+      <input type="date" id="searchCheckout">
+    </div>
+
+    <div class="search-field">
+      <label for="searchGuests">GUESTS</label>
+      <select id="searchGuests">
+        <option value="1">1 Guest</option>
+        <option value="2" selected>2 Guests</option>
+        <option value="3">3 Guests</option>
+        <option value="4">4 Guests</option>
+      </select>
+    </div>
+
+    <button class="btn btn-dark search-btn" id="searchBtn">Find a Room →</button>
+  </section>
+
+  <section class="intro section-wrap">
+    <div>
+      <span class="eyebrow dark-eyebrow">WELCOME TO LUXESTAY</span>
+      <h2>A little luxury.<br>A lot of <em>comfort.</em></h2>
+    </div>
+    <p>Whether you are travelling for business or taking a relaxing break, discover a stay designed around you.</p>
+  </section>
+
+  <section class="rooms-section section-wrap" id="rooms">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow dark-eyebrow">OUR COLLECTION</span>
+        <h2>Rooms & <em>Suites</em></h2>
+      </div>
+      <p>Beautiful spaces for every kind of traveller.</p>
+    </div>
+
+    <div id="roomsGrid" class="rooms-grid">
+      <p class="loading">Discovering your perfect stay...</p>
+    </div>
+  </section>
+
+  <section class="amenities" id="services">
+    <div class="section-wrap">
+      <span class="eyebrow">THE LUXESTAY EXPERIENCE</span>
+      <h2>Everything you need.<br><em>Nothing you don't.</em></h2>
+
+      <div class="amenity-grid">
+        <article>
+          <span>✧</span>
+          <h3>Free Wi-Fi</h3>
+          <p>Stay connected throughout your visit.</p>
+        </article>
+        <article>
+          <span>♨</span>
+          <h3>Comfort First</h3>
+          <p>Thoughtful spaces made for relaxation.</p>
+        </article>
+        <article>
+          <span>◇</span>
+          <h3>Room Service</h3>
+          <p>Convenience and care at your fingertips.</p>
+        </article>
+        <article>
+          <span>☼</span>
+          <h3>Warm Hospitality</h3>
+          <p>Friendly service from arrival to departure.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact section-wrap" id="contact">
+    <div>
+      <span class="eyebrow dark-eyebrow">WE'RE HERE TO HELP</span>
+      <h2>Let's plan your<br><em>next stay.</em></h2>
+    </div>
+    <div>
+      <p>Have questions about your booking? We are happy to help.</p>
+      <a href="mailto:hello@luxestay.example">hello@luxestay.example</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a class="logo footer-logo" href="#">✦ LuxeStay</a>
+  <p>Thoughtful stays. Memorable journeys.</p>
+  <span>© 2026 LuxeStay. College project demonstration.</span>
+</footer>
+
+<!-- Login and Registration -->
+<div class="modal hidden" id="authModal">
+  <div class="modal-card">
+    <button class="modal-close" id="closeModal" aria-label="Close">×</button>
+    <div class="modal-brand">✦ LuxeStay</div>
+    <h2 id="authTitle">Welcome back</h2>
+    <p class="modal-subtitle" id="authSubtitle">Sign in to manage your stay.</p>
+
+    <form id="authForm">
+      <div id="nameField" class="form-group hidden">
+        <label for="fullName">Full name</label>
+        <input id="fullName" type="text" autocomplete="name" placeholder="Your full name">
+      </div>
+
+      <div id="phoneField" class="form-group hidden">
+        <label for="phone">Phone number</label>
+        <input id="phone" type="tel" autocomplete="tel" placeholder="Your phone number">
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input id="email" type="email" autocomplete="email" required placeholder="you@example.com">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input id="password" type="password" autocomplete="current-password" required minlength="8" placeholder="At least 8 characters">
+      </div>
+
+      <p class="form-message" id="authMessage" role="status"></p>
+      <button class="btn btn-dark form-submit" id="authSubmit" type="submit">Login</button>
+    </form>
+
+    <p class="switch-auth">
+      <span id="switchText">New to LuxeStay?</span>
+      <button id="switchAuth" type="button">Create an account</button>
+    </p>
+  </div>
+</div>
+
+<!-- Booking Form -->
+<div class="modal hidden" id="bookingModal">
+  <div class="modal-card">
+    <button class="modal-close" id="closeBooking" aria-label="Close">×</button>
+    <div class="modal-brand">✦ LUXESTAY RESERVATIONS</div>
+    <h2 id="bookingRoomName">Reserve your stay</h2>
+    <p class="modal-subtitle" id="bookingRoomPrice"></p>
+
+    <form id="bookingForm">
+      <input type="hidden" id="bookingRoomId">
+
+      <div class="form-group">
+        <label for="checkIn">Check-in</label>
+        <input id="checkIn" type="date" required>
+      </div>
+
+      <div class="form-group">
+        <label for="checkOut">Check-out</label>
+        <input id="checkOut" type="date" required>
+      </div>
+
+      <div class="form-group">
+        <label for="guests">Number of guests</label>
+        <select id="guests" required>
+          <option value="1">1 Guest</option>
+          <option value="2" selected>2 Guests</option>
+          <option value="3">3 Guests</option>
+          <option value="4">4 Guests</option>
+        </select>
+      </div>
+
+      <p id="priceEstimate" class="price-estimate"></p>
+      <p class="form-message" id="bookingMessage" role="status"></p>
+      <button class="btn btn-dark form-submit" type="submit">Confirm Booking</button>
+    </form>
+  </div>
+</div>
+
+<!-- My Bookings and Booking History -->
+<div class="modal hidden" id="dashboardModal">
+  <div class="modal-card dashboard-card">
+    <button class="modal-close" id="closeDashboard" aria-label="Close">×</button>
+    <div class="modal-brand">✦ YOUR LUXESTAY</div>
+    <h2>My Bookings / Booking History</h2>
+    <p class="modal-subtitle" id="dashboardWelcome"></p>
+    <div id="myBookings" class="my-bookings"></div>
+    <button class="btn btn-outline form-submit" id="dashboardLogout">Logout</button>
+  </div>
+</div>
+
+<div id="toast" class="toast" role="status"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
